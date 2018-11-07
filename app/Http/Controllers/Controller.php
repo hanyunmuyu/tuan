@@ -15,6 +15,8 @@ class Controller extends BaseController
     public function success($data = [], $msg = "成功！", $code = 200, $status = 'success'): array
     {
         return [
+            'code' => $code,
+            'status' => $status,
             'msg' => $msg,
             'data' => $this->delNull($data),
         ];
