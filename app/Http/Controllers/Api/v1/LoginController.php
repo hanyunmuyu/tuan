@@ -40,6 +40,7 @@ class LoginController extends Controller
         $user->api_token = $token;
         $user->save();
         $user->avatar = config('app.url') . $user->avatar;
+        $user->bg = config('app.url') . $user->bg;
         return $this->success($user->toArray());
     }
 }
