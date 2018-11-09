@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             $table->string('avatar')->nullable()->comment('用户头像');
+            $table->string('bg')->nullable()->comment('用户个人中心背景图');
 
             $table->unsignedInteger('school_id')->nullable()->comment('用户高校id');
 

@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
                 'password' => encrypt('123456'),
                 'avatar' => '/img/dog.jpg',
                 'motto' => '故天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能',
+                'bg' => '故天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能',
             ],
             [
                 'mobile' => '15249698716',
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
                 'password' => encrypt('123456'),
                 'avatar' => '/img/dog.jpg',
                 'motto' => '故天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能',
+                'bg' => '故天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能',
             ],
         ];
         foreach ($userList as $user) {
