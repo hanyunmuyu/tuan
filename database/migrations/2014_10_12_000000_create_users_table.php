@@ -40,6 +40,8 @@ class CreateUsersTable extends Migration
 
             $table->tinyInteger('gender')->default(1)->comment('性别：1男，2女，3保密');
 
+            $table->string('motto')->nullable()->comment('座右铭');
+
             $table->rememberToken();
             $table->timestamps();
         });

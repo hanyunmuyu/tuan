@@ -17,4 +17,14 @@ class UserRepository
     {
         return User::where('mobile', $mobile)->first();
     }
+
+    public function createUser($data)
+    {
+        return User::create($data);
+    }
+
+    public function getUserByMobile($mobile)
+    {
+        return User::where('mobile', $mobile)->first();
+    }
 }

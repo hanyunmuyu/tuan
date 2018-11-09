@@ -13,7 +13,10 @@
 Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
 
 
+    //登录
     Route::post('/login', 'LoginController@login');
+    //注册
+    Route::post('/register', 'RegisterController@register');
 
     Route::group(['middleware' => ['apiMiddleware']], function () {
 
