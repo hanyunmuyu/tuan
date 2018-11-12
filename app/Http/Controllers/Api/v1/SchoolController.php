@@ -15,8 +15,9 @@ class SchoolController extends Controller
         $this->schoolRepository = $schoolRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
+        $page = $request->get('page', 1);
         $schoolList = $this->schoolRepository->getSchoolList();
         if ($schoolList) {
             foreach ($schoolList as $key => $value) {
@@ -25,6 +26,17 @@ class SchoolController extends Controller
             }
         }
         $schoolList = $this->formatPaginate($schoolList);
-        return $this->success($schoolList);
+        $schoolRecommend = $this->schoolRepository->getRecommendSchool();
+        if ($schoolRecommend && $page == 1) {
+            foreach ($schoolRecommend as $key => $v) {
+                $v->school_logo = config('app.url') . $v->school_logo;
+                $schoolRecommend[$key] = $v;
+            }
+            $data['schoolRecommend'] = $schoolRecommend->toArray();
+        } else {
+            $data['schoolRecommend'] = [];
+        }
+        $data['schoolList'] = $schoolList;
+        return $this->success($data);
     }
 }

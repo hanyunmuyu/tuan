@@ -10,6 +10,7 @@ namespace App\Repositories\v1;
 
 
 use App\Models\SchoolModel;
+use App\Models\SchoolRecommendModel;
 
 class SchoolRepository
 {
@@ -17,5 +18,12 @@ class SchoolRepository
     {
         return SchoolModel::orderby('favorite_number', 'desc')
             ->paginate();
+    }
+
+    public function getRecommendSchool()
+    {
+        return SchoolRecommendModel::leftjoin('school', 'school.id', '=', 'school_recommend.school_id')
+            ->select('school.*')
+            ->get();
     }
 }
