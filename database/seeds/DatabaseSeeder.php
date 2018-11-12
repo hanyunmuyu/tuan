@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SchoolSeeder::class);
         $this->call(SchoolRecommendSeeder::class);
         $this->call(CommunitySeeder::class);
+        $this->call(CommunityUserSeeder::class);
     }
 }
