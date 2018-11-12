@@ -20,6 +20,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
 
     //高校列表
     Route::get('/school', 'SchoolController@list');
+    Route::get('/community', 'CommunityController@list');
 
 
     Route::group(['middleware' => ['apiMiddleware']], function () {
