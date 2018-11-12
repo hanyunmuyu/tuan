@@ -42,4 +42,14 @@ class Controller extends BaseController
         }
         return $arr;
     }
+
+    public function formatPaginate($paginate)
+    {
+        $data = [];
+        $paginate = $paginate->toArray();
+        $data['currentPage'] = $paginate['current_page'];
+        $data['totalPage'] = $paginate['last_page'];
+        $data['data'] = $paginate['data'];
+        return $data;
+    }
 }

@@ -18,6 +18,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     //注册
     Route::post('/register', 'RegisterController@register');
 
+    //高校列表
+    Route::get('/school', 'SchoolController@list');
+
+
     Route::group(['middleware' => ['apiMiddleware']], function () {
 
     });
