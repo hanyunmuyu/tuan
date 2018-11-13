@@ -23,6 +23,18 @@ class CommunityController extends Controller
             $v->community_logo = config('app.url') . $v->community_logo;
             $communityList[$k] = $v;
         }
+        $data['userCommunityList'] = [];
+        $auth = auth('api');
+        if ($auth->check()) {
+            $userCommunityList = $this->communityRepository->getUserCommunityListByUserId($auth->user()->id);
+            if ($userCommunityList) {
+                foreach ($userCommunityList as $k => $v) {
+                    $v->community_logo = config('app.url') . $v->community_logo;
+                    $userCommunityList[$k] = $v;
+                }
+                $data['userCommunityList'] = $userCommunityList->toArray();
+            }
+        }
         $communityList = $this->formatPaginate($communityList);
         $data['communityList'] = $communityList;
         return $this->success($data);
