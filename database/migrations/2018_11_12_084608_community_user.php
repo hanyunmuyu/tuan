@@ -29,7 +29,7 @@ class CommunityUser extends Migration
 
             $table->unsignedTinyInteger('status')->default(1)->comment('社团用户状态：0拉黑，1新申请，2申请通过');
 
-            $table->unique(['community_id', 'user_id'])->comment('唯一索引');
+            $table->unique(['community_id', 'user_id', 'type'])->comment('唯一索引');
 
             $table->timestamps();
         });

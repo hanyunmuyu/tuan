@@ -11,6 +11,7 @@ class CommunityUserModel extends Model
     protected $fillable = [
         'community_id',
         'user_id',
-
+        'type',
+        'status',
     ];
 }

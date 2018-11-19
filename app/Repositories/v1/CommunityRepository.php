@@ -48,7 +48,7 @@ class CommunityRepository
         $data['user_id'] = $userId;
         $data['community_id'] = $communityId;
         $data['type'] = 'join';
-        $re = CommunityModel::create($data);
+        $re = CommunityUserModel::create($data);
         if ($re) {
             return $this->updateCommunityMemberNumber($communityId);
         }
@@ -59,7 +59,7 @@ class CommunityRepository
         return CommunityModel::where('id', $communityId)->increment('member_number', $number);
     }
 
-    public function findUserCommunity($userId, $communityId, $type = 'favorite')
+    public function findUserCommunity($userId, $communityId, $type)
     {
         return CommunityUserModel::where('user_id', $userId)
             ->where('type', $type)
