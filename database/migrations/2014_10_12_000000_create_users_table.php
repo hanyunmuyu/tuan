@@ -39,9 +39,19 @@ class CreateUsersTable extends Migration
 
             $table->unsignedInteger('school_id')->nullable()->comment('用户高校id');
 
+            $table->date('birth_day')->nullable()->comment('出生年月');
+
+            $table->unsignedInteger('grade')->nullable()->comment('入学年份');
+
             $table->tinyInteger('gender')->default(1)->comment('性别：1男，2女，3保密');
 
             $table->string('motto')->nullable()->comment('座右铭');
+
+            $table->unsignedInteger('province')->index()->nullable()->comment('省份编码');
+
+            $table->unsignedInteger('city')->index()->nullable()->comment('市级编码');
+
+            $table->unsignedInteger('area')->index()->nullable()->comment('地区编码');
 
             $table->rememberToken();
             $table->timestamps();

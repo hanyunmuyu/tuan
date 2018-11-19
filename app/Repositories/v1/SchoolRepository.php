@@ -26,4 +26,9 @@ class SchoolRepository
             ->select('school.*')
             ->get();
     }
+
+    public function getSchoolById($schoolId)
+    {
+        return SchoolModel::where('id', $schoolId)->first();
+    }
 }
