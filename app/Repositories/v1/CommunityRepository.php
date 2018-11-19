@@ -26,4 +26,44 @@ class CommunityRepository
             ->limit($limit)
             ->get();
     }
+
+    public function payAttentionToCommunity($userId, $communityId)
+    {
+        $data['user_id'] = $userId;
+        $data['community_id'] = $communityId;
+        $data['type'] = 'attention';
+        $res = CommunityUserModel::create($data);
+        if ($res) {
+            $this->updateCommunityFavoriteNumber($communityId);
+        }
+    }
+
+    public function updateCommunityFavoriteNumber($communityId, $number = 1)
+    {
+        return CommunityModel::where('id', $communityId)->increment('favorite_number', $number);
+    }
+
+    public function joinInCommunity($userId, $communityId)
+    {
+        $data['user_id'] = $userId;
+        $data['community_id'] = $communityId;
+        $data['type'] = 'join';
+        $re = CommunityModel::create($data);
+        if ($re) {
+            return $this->updateCommunityMemberNumber($communityId);
+        }
+    }
+
+    public function updateCommunityMemberNumber($communityId, $number = 1)
+    {
+        return CommunityModel::where('id', $communityId)->increment('member_number', $number);
+    }
+
+    public function findUserCommunity($userId, $communityId, $type = 'favorite')
+    {
+        return CommunityUserModel::where('user_id', $userId)
+            ->where('type', $type)
+            ->where('community_id', $communityId)
+            ->first();
+    }
 }

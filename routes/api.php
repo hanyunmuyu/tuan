@@ -24,7 +24,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
 
 
     Route::group(['middleware' => ['apiMiddleware']], function () {
-
+        //关注社团
+        Route::post('/community/attention', 'CommunityController@attention');
+        //加入社团
+        Route::post('/community/join', 'CommunityController@join');
     });
 });
 
