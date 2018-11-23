@@ -59,11 +59,19 @@ class CommunityRepository
         return CommunityModel::where('id', $communityId)->increment('member_number', $number);
     }
 
-    public function findUserCommunity($userId, $communityId, $type)
+    public function findUserCommunity($userId, $communityId, $type='attention')
     {
         return CommunityUserModel::where('user_id', $userId)
             ->where('type', $type)
             ->where('community_id', $communityId)
+            ->first();
+    }
+
+    public function detail($communityId)
+    {
+        return CommunityModel::leftjoin('school', 'school.id', '=', 'community.school_id')
+            ->select('community.*', 'school.id as school_id', 'school.school_name')
+            ->where('community.id', $communityId)
             ->first();
     }
 }

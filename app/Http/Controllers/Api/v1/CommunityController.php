@@ -70,4 +70,25 @@ class CommunityController extends Controller
         $this->communityRepository->joinInCommunity($user->id, $communityId);
         return $this->success([], '加入成功');
     }
+
+    public function detail(Request $request)
+    {
+        $id = $request->get('id');
+        if (!$id) {
+            return $this->error('id不可以为空');
+        }
+        $community = $this->communityRepository->detail($id);
+        if (!$community) {
+            return $this->error('该社团不存在');
+        }
+        $community->isAttention = false;
+        if (auth('api')->check()) {
+            $user = $request->user('api');
+            $userCommunity = $this->communityRepository->findUserCommunity($user->id, $id);
+            if ($userCommunity) {
+                $community->isAttention = true;
+            }
+        }
+        return $this->success($community->toArray());
+    }
 }
