@@ -12,23 +12,23 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function success($data = [], $msg = "成功！", $code = 200, $status = 'success'): array
+    public function success($data = [], $msg = "成功！", $code = 200, $status = 'success')
     {
-        return [
+        return response()->json([
             'code' => $code,
             'status' => $status,
             'msg' => $msg,
             'data' => $this->delNull($data),
-        ];
+        ]);
     }
 
-    public function error($msg = "失败！", $code = 400, $status = 'error'): array
+    public function error($msg = "失败！", $code = 400, $status = 'error')
     {
-        return [
+        return response()->json([
             'code' => $code,
             'status' => $status,
             'msg' => $msg
-        ];
+        ]);
     }
 
     private function delNull($arr)

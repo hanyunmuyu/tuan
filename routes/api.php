@@ -24,6 +24,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     //社团详情
     Route::get('/community/detail', 'CommunityController@detail');
 
+
+    Route::get('/communityActive/list', 'CommunityActiveController@list');
+
+
     Route::group(['middleware' => ['apiMiddleware']], function () {
         //关注社团
         Route::post('/community/attention', 'CommunityController@attention');
