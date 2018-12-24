@@ -15,3 +15,4 @@
 //    return view('welcome');
 //});
 Route::post('/login','LoginController@login');
+Route::get('/school', 'SchoolController@index');

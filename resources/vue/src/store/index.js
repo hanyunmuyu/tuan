@@ -33,11 +33,10 @@ const mutations = {
     axios.post('http://127.0.0.1:8000/admin/login', param).then((v) => {
       return v.data
     }).then((v) => {
-      console.log()
       let user = JSON.stringify(v.data)
       state.user = v.data
       localStorage.setItem('user', user)
-      // window.location.href = '/'
+      window.location.href = '/'
     })
   },
   logout (state) {

@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CommunitySeeder::class);
         $this->call(CommunityUserSeeder::class);
         $this->call(CommunityActiveSeeder::class);
+
+        $this->call(AdminSeeder::class);
     }
 }

@@ -3,12 +3,11 @@
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="/" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
+            <router-link :to="{path: '/'}" class="logo">
                 <span class="logo-mini"><b>A</b>LT</span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>莘莘</b>后台管理系统</span>
-            </a>
+            </router-link>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
@@ -288,13 +287,13 @@
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active treeview">
                         <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            <i class="fa fa-dashboard"></i> <span>高校管理</span>
                             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                            <li class="active"><router-link :to="{path:'/school'}"><i class="fa fa-circle-o"></i>高校列表</router-link></li>
                             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                         </ul>
                     </li>
