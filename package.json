@@ -16,6 +16,7 @@
   "dependencies": {
     "admin-lte": "^2.4.8",
     "ajv": "^6.6.2",
+    "axios": "^0.18.0",
     "bootstrap": "^3.3.7",
     "bootstrap-colorpicker": "^2.5.1",
     "bootstrap-datepicker": "^1.7.0",

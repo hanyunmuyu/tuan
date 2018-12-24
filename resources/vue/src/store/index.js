@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import axios from 'axios'
 Vue.use(Vuex)
 
 // 数据
 var state = {
-  token: localStorage.getItem('token')
+  user: JSON.parse(localStorage.getItem('user'))
 }
 
 // 获取数据
@@ -25,15 +25,25 @@ const actions = {
 
 // 同步动作
 const mutations = {
-  login (state, param) {
-    state.token = param.username
-    localStorage.setItem('token', param.username)
-    window.location.href = '/'
+  login (state, params) {
+    let param = new URLSearchParams()
+    for (let p in params) {
+      param.append(p, params[p])
+    }
+    axios.post('http://127.0.0.1:8000/admin/login', param).then((v) => {
+      return v.data
+    }).then((v) => {
+      console.log()
+      let user = JSON.stringify(v.data)
+      state.user = v.data
+      localStorage.setItem('user', user)
+      // window.location.href = '/'
+    })
   },
   logout (state) {
-    state.token = null
+    state.user = null
     localStorage.clear()
-    window.location.href = '/'
+    // window.location.href = '/'
   }
 }
 

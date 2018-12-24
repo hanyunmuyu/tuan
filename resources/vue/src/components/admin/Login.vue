@@ -1,7 +1,7 @@
 <template>
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <a href="/"><b>莘莘</b>后台管理系统</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
@@ -19,17 +19,16 @@
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                <input type="checkbox"> Remember Me
+                                <input type="checkbox">记住登录状态
                             </label>
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" @click="doLogin" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        <button type="submit" @click="doLogin" class="btn btn-primary btn-block btn-flat">登录</button>
                     </div>
                     <!-- /.col -->
                 </div>
-                {{$store.state.token}}
         </div>
         <!-- /.login-box-body -->
     </div>
@@ -50,7 +49,7 @@ export default {
     }
   },
   mounted () {
-    if (this.$store.state.token === null) {
+    if (this.$store.state.user === null) {
       this.$router.push('/login')
     } else {
       this.$router.push('/')
