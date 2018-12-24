@@ -3,8 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import 'vue2-admin-lte/src/lib/css'
-import 'vue2-admin-lte/src/lib/script'
+import store from './store'
+import 'bootstrap'
+import 'admin-lte'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'admin-lte/dist/css/AdminLTE.min.css'
+import 'admin-lte/dist/css/skins/_all-skins.min.css'
+import 'font-awesome/css/font-awesome.css'
 
 Vue.config.productionTip = false
 
@@ -12,6 +17,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
