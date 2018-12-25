@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "unit": "jest --config resources/vue/test/unit/jest.conf.js --coverage",
     "e2e": "node resources/vue/test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
+    "test": "npm run resources/vue/unit && npm run resources/vue/e2e",
     "lint": "eslint --ext .js,.vue src resources/vue/test/unit resources/vue/test/e2e/specs",
     "build": "node resources/vue/build/build.js"
   },

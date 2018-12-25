@@ -30,7 +30,7 @@ const mutations = {
     for (let p in params) {
       param.append(p, params[p])
     }
-    axios.post('http://127.0.0.1:8000/admin/login', param).then((v) => {
+    axios.post('http://127.0.0.1:88/admin/login', param).then((v) => {
       return v.data
     }).then((v) => {
       let user = JSON.stringify(v.data)

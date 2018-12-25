@@ -26,8 +26,15 @@
                                 <td class="col-2 col-sm-2"><img :src="school.school_logo" class="img-responsive"></td>
                                 <td>{{school.created_at}}</td>
                                 <td>
-                                    <button class="btn btn-danger">删除</button>
-                                    <button class="btn btn-warning">禁用</button>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
+                                        删除
+                                    </button>
+                                    <Modal tag="modal-danger" type="danger" title="高校管理" :tooltip="'你确定要删除'+school.school_name" cancel="取消" @ok="deleteSchool"></Modal>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">
+                                        禁用
+                                    </button>
+                                    <Modal tag="modal-warning" type="warning" title="高校管理" :tooltip="'你确定要删除'+school.school_name" cancel="取消" @ok="deleteSchool"></Modal>
+
                                 </td>
                             </tr>
                             </tbody>
@@ -41,42 +48,49 @@
         <div class="row">
             <div class="align-content-center">
                 <ul class="pagination pagination-sm">
-                    <li v-for="p in lastPage" :key="p"><router-link :to="{path:'/school',query:{page:p}}">{{p}}</router-link></li>
+                    <li  v-for="p in lastPage" v-bind:class="{'active':p===parseInt(currentPage)}" :key="p"><router-link :to="{path:'/school',query:{page:p}}">{{p}}</router-link></li>
                 </ul>
             </div>
         </div>
     </section>
 </template>
 <script>
-import axios from 'axios'
-
+import {getSchoolList as getSchoolData} from '../../service'
+import Modal from '../widget/Modal'
 export default {
   name: 'School',
+  components: {Modal},
   data: function () {
     return {
       'schoolList': {},
-      lastPage: 1
+      lastPage: 1,
+      currentPage: 1
     }
   },
   watch: {
     $route (to, from) {
-      this.getSchoolList(this.$route.query.page)
+      this.$data.currentPage = this.$route.query.page === undefined ? 1 : this.$route.query.page
+      this.getSchoolList(this.$data.currentPage)
     }
   },
   methods: {
     getSchoolList (page) {
-      axios.get('http://127.0.0.1:8000/admin/school?page=' + page)
-        .then((v) => {
-          return v.data
-        }).then((v) => {
-          this.$data.schoolList = v.data
-          this.$data.lastPage = v.data.last_page
-        })
+      getSchoolData(page).then((v) => {
+        this.$data.schoolList = v
+        this.$data.lastPage = v.last_page
+      })
+    },
+    deleteSchool (v) {
+      console.log(1111)
+      v()
     }
   },
   mounted () {
-    this.getSchoolList(this.$route.query.page === undefined ? 1 : this.$route.query.page)
-  }
+    this.$data.currentPage = this.$route.query.page === undefined ? 1 : this.$route.query.page
+    this.getSchoolList(this.$data.currentPage)
+  },
+  comments: {Modal},
+  template: '<Modal/>'
 }
 </script>
 
