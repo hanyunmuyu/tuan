@@ -697,7 +697,6 @@ export default {
     if (this.$store.state.user === null) {
       this.$router.push('/login')
     }
-    console.log(this.$store.state.user)
   }
 }
 </script>

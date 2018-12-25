@@ -35,17 +35,20 @@
 </template>
 
 <script>
+import {login} from '../../service'
 export default {
   name: 'Login',
   data: function () {
     return {
-      username: '',
-      password: ''
+      username: 'hanyun',
+      password: '123456'
     }
   },
   methods: {
     doLogin () {
-      this.$store.dispatch('login', {'username': this.$data.username, 'password': this.$data.password})
+      login({'username': this.$data.username, 'password': this.$data.password}).then((v) => {
+        this.$store.dispatch('login', v)
+      })
     }
   },
   mounted () {

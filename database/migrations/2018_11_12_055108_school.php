@@ -29,6 +29,7 @@ class School extends Migration
 
             $table->unsignedInteger('member_number')->default(0)->comment('成员总数');
 
+            $table->softDeletes();
 
             $table->timestamps();
         });

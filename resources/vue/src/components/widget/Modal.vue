@@ -24,7 +24,32 @@
 <script>
 export default {
   name: 'Modal',
-  props: ['title', 'type', 'tooltip', 'cancel', 'ok', 'tag'],
+  props: {
+    'title': {
+      type: String,
+      default: ''
+    },
+    'type': {
+      type: String,
+      default: 'default'
+    },
+    'tooltip': {
+
+      type: String,
+      default: ''
+    },
+    'cancel': {
+      type: String,
+      default: '取消'
+    },
+    'ok': {
+      type: Function
+    },
+    'tag': {
+      type: String,
+      default: 'id'
+    }
+  },
   data: function () {
     return {
       cls: {

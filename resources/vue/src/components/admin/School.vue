@@ -33,7 +33,7 @@
                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">
                                         禁用
                                     </button>
-                                    <Modal tag="modal-warning" type="warning" title="高校管理" :tooltip="'你确定要删除'+school.school_name" cancel="取消" @ok="deleteSchool"></Modal>
+                                    <Modal tag="modal-warning" type="warning" title="高校管理" :tooltip="'你确定要删除'+school.school_name" cancel="取消" @ok="forbidden"></Modal>
 
                                 </td>
                             </tr>
@@ -48,7 +48,9 @@
         <div class="row">
             <div class="align-content-center">
                 <ul class="pagination pagination-sm">
-                    <li  v-for="p in lastPage" v-bind:class="{'active':p===parseInt(currentPage)}" :key="p"><router-link :to="{path:'/school',query:{page:p}}">{{p}}</router-link></li>
+                    <li v-for="p in lastPage" v-bind:class="{'active':p===parseInt(currentPage)}" :key="p">
+                        <router-link  :to="{path:'/school',query:{page:p}}">{{p}}</router-link>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -81,7 +83,9 @@ export default {
       })
     },
     deleteSchool (v) {
-      console.log(1111)
+      v()
+    },
+    forbidden (v) {
       v()
     }
   },

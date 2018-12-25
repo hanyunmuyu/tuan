@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import router from '../router'
+
 Vue.use(Vuex)
 
 // 数据
@@ -25,24 +26,15 @@ const actions = {
 
 // 同步动作
 const mutations = {
-  login (state, params) {
-    let param = new URLSearchParams()
-    for (let p in params) {
-      param.append(p, params[p])
-    }
-    axios.post('http://127.0.0.1:88/admin/login', param).then((v) => {
-      return v.data
-    }).then((v) => {
-      let user = JSON.stringify(v.data)
-      state.user = v.data
-      localStorage.setItem('user', user)
-      window.location.href = '/'
-    })
+  login (state, user) {
+    state.user = user
+    localStorage.setItem('user', JSON.stringify(user))
+    router.push('/')
   },
-  logout (state) {
+  logout () {
     state.user = null
     localStorage.clear()
-    // window.location.href = '/'
+    router.push('/login')
   }
 }
 
