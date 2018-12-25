@@ -29,9 +29,7 @@
         </div>
         <div class="row">
             <div class="align-content-center">
-                <ul class="pagination pagination-sm">
-
-                </ul>
+                <Pagination :totalPage=10 url="community"></Pagination>
             </div>
         </div>
     </section>
@@ -39,9 +37,10 @@
 
 <script>
 import {getCommunityList} from '../../service'
-
+import Pagination from '../widget/Pagination'
 export default {
   name: 'Community',
+  components: {Pagination},
   data: function () {
     return {
       'communityList': {},
@@ -60,7 +59,9 @@ export default {
   mounted () {
     this.$data.currentPage = this.$route.query.page === undefined ? 1 : this.$route.query.page
     this.getDataList(this.$data.currentPage)
-  }
+  },
+  comments: {Pagination},
+  template: '<Pagination/>'
 }
 </script>
 
