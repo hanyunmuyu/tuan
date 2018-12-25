@@ -1,10 +1,10 @@
 <template>
     <ul class="pagination pagination-sm no-margin center-block">
-        <li @click.prevent="goBack(url)"><a href="#">&laquo;</a></li>
+        <li @click.prevent="goBack(url)"><a href="#">上一页</a></li>
         <li v-for="index in parseInt(totalPage)" :class="{active:parseInt(currentPage)===index}" :key="index">
             <router-link :to="{path:url,query:{page:index}}">{{index}}</router-link>
         </li>
-        <li @click.prevent="forward(url)"><a href="#">&raquo;</a></li>
+        <li @click.prevent="forward(url)"><a href="#">下一页</a></li>
     </ul>
 </template>
 
@@ -13,8 +13,6 @@ export default {
   name: 'Pagination',
   data: function () {
     return {
-      'communityList': {},
-      lastPage: 1,
       currentPage: 1
     }
   },

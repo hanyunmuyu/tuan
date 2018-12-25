@@ -46,28 +46,18 @@
             <!-- /.col -->
         </div>
         <div class="row">
-            <div class="align-content-center">
-                <ul class="pagination pagination-sm">
-                    <li @click.prevent="back">
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li v-for="p in lastPage" v-bind:class="{'active':p===parseInt(currentPage)}" :key="p">
-                        <router-link  :to="{path:'/school',query:{page:p}}">{{p}}</router-link>
-                    </li>
-                    <li @click.prevent="forward">
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
+            <Pagination :totalPage=lastPage url="/school"></Pagination>
         </div>
     </section>
 </template>
 <script>
 import {getSchoolList as getSchoolData} from '../../service'
 import Modal from '../widget/Modal'
+import Pagination from '../widget/Pagination'
+
 export default {
   name: 'School',
-  components: {Modal},
+  components: {Pagination, Modal},
   data: function () {
     return {
       'schoolList': {},
@@ -93,28 +83,14 @@ export default {
     },
     forbidden (v) {
       v()
-    },
-    back () {
-      let p = parseInt(this.$data.currentPage) - 1
-      if (p <= 0) {
-        return
-      }
-      this.$router.push({path: '/school', query: {page: p}})
-    },
-    forward () {
-      let p = parseInt(this.$data.currentPage) + 1
-      if (p > parseInt(this.$data.lastPage)) {
-        return
-      }
-      this.$router.push({path: '/school', query: {page: p}})
     }
   },
   mounted () {
     this.$data.currentPage = this.$route.query.page === undefined ? 1 : this.$route.query.page
     this.getSchoolList(this.$data.currentPage)
   },
-  comments: {Modal},
-  template: '<Modal/>'
+  comments: {Modal, Pagination},
+  template: '<Modal/>,<Pagination/>'
 }
 </script>
 

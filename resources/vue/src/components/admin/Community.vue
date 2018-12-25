@@ -29,7 +29,7 @@
         </div>
         <div class="row">
             <div class="align-content-center">
-                <Pagination :totalPage=10 url="community"></Pagination>
+                <Pagination :totalPage=10 url="/community"></Pagination>
             </div>
         </div>
     </section>

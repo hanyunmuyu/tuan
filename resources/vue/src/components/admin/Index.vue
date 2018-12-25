@@ -709,6 +709,12 @@ export default {
       $('.treeview-menu').find('li').each(function () {
         $(this).removeClass('active')
       })
+      let path = '#' + this.$route.path
+      $('.treeview-menu').find('li>a').each(function () {
+        if ($(this).attr('href') === path) {
+          $(this).parent().addClass('active').parent().parent().addClass('active')
+        }
+      })
     }
   }
 }
