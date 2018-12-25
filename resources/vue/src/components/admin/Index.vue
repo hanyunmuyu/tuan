@@ -4,7 +4,7 @@
         <header class="main-header">
             <!-- Logo -->
             <router-link :to="{path: '/'}" class="logo">
-                <span class="logo-mini"><b>A</b>LT</span>
+                <span class="logo-mini"><b>莘莘</b></span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>莘莘</b>后台管理系统</span>
             </router-link>
