@@ -48,8 +48,14 @@
         <div class="row">
             <div class="align-content-center">
                 <ul class="pagination pagination-sm">
+                    <li @click.prevent="back">
+                        <a href="#">&laquo;</a>
+                    </li>
                     <li v-for="p in lastPage" v-bind:class="{'active':p===parseInt(currentPage)}" :key="p">
                         <router-link  :to="{path:'/school',query:{page:p}}">{{p}}</router-link>
+                    </li>
+                    <li @click.prevent="forward">
+                        <a href="#">&raquo;</a>
                     </li>
                 </ul>
             </div>
@@ -87,6 +93,20 @@ export default {
     },
     forbidden (v) {
       v()
+    },
+    back () {
+      let p = parseInt(this.$data.currentPage) - 1
+      if (p <= 0) {
+        return
+      }
+      this.$router.push({path: '/school', query: {page: p}})
+    },
+    forward () {
+      let p = parseInt(this.$data.currentPage) + 1
+      if (p > parseInt(this.$data.lastPage)) {
+        return
+      }
+      this.$router.push({path: '/school', query: {page: p}})
     }
   },
   mounted () {

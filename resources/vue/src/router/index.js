@@ -4,6 +4,7 @@ import Admin from '../components/admin/Index'
 import Home from '../components/admin/Home'
 import Login from '../components/admin/Login'
 import School from '../components/admin/School'
+import Community from '../components/admin/Community'
 Vue.use(Router)
 
 export default new Router({
@@ -19,6 +20,10 @@ export default new Router({
         {
           path: 'school',
           component: School
+        },
+        {
+          path: 'community',
+          component: Community
         }
       ]
     },

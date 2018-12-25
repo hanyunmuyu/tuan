@@ -294,7 +294,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><router-link :to="{path:'/school'}"><i class="fa fa-circle-o"></i>高校列表</router-link></li>
-                            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                            <li><router-link :to="{path:'/community'}"><i class="fa fa-circle-o"></i>社团列表</router-link></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -697,15 +697,19 @@ export default {
     if (this.$store.state.user === null) {
       this.$router.push('/login')
     }
-    var path = '#' + this.$route.path
+    let path = '#' + this.$route.path
     $('.treeview-menu').find('li>a').each(function () {
       if ($(this).attr('href') === path) {
         $(this).parent().addClass('active').parent().parent().addClass('active')
       }
     })
-    // if ($('.treeview-menu').find('li>a').attr('href') === '#' + this.$route.path) {
-    //   $('.treeview-menu').parent('li').addClass('active')
-    // }
+  },
+  watch: {
+    $route (to, from) {
+      $('.treeview-menu').find('li').each(function () {
+        $(this).removeClass('active')
+      })
+    }
   }
 }
 </script>

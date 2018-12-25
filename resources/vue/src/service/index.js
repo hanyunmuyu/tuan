@@ -42,4 +42,11 @@ function login (params) {
     return v.data
   })
 }
-export {getSchoolList, login}
+function getCommunityList (page) {
+  return get('/admin/community?page' + page).then((v) => {
+    return v.data
+  }).then((v) => {
+    return v.data
+  })
+}
+export {getSchoolList, login, getCommunityList}
