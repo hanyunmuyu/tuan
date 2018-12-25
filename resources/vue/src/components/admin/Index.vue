@@ -285,7 +285,7 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="active treeview">
+                    <li class=" treeview">
                         <a href="#">
                             <i class="fa fa-dashboard"></i> <span>高校管理</span>
                             <span class="pull-right-container">
@@ -293,7 +293,7 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="active"><router-link :to="{path:'/school'}"><i class="fa fa-circle-o"></i>高校列表</router-link></li>
+                            <li><router-link :to="{path:'/school'}"><i class="fa fa-circle-o"></i>高校列表</router-link></li>
                             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                         </ul>
                     </li>
@@ -697,6 +697,17 @@ export default {
     if (this.$store.state.user === null) {
       this.$router.push('/login')
     }
+    var path = '#' + this.$route.path
+    $('.treeview-menu').find('li>a').each(function () {
+      console.log(path)
+      if ($(this).attr('href') === path) {
+        console.log($(this).text())
+        $(this).parent().addClass('active').parent().parent().addClass('active')
+      }
+    })
+    // if ($('.treeview-menu').find('li>a').attr('href') === '#' + this.$route.path) {
+    //   $('.treeview-menu').parent('li').addClass('active')
+    // }
   }
 }
 </script>
