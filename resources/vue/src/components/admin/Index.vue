@@ -699,9 +699,7 @@ export default {
     }
     var path = '#' + this.$route.path
     $('.treeview-menu').find('li>a').each(function () {
-      console.log(path)
       if ($(this).attr('href') === path) {
-        console.log($(this).text())
         $(this).parent().addClass('active').parent().parent().addClass('active')
       }
     })
