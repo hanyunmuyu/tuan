@@ -17,8 +17,8 @@ instance.interceptors.response.use(function (response) {
   // Do something with response error
   return Promise.reject(error)
 })
-function get (url) {
-  return instance.get(url)
+function get (url, params = {}) {
+  return instance.get(url, {params: params})
 }
 function post (url, params) {
   let param = new URLSearchParams()
@@ -28,7 +28,7 @@ function post (url, params) {
   return instance.post(url, param)
 }
 function getSchoolList (page) {
-  return get('/admin/school?page=' + page)
+  return get('/admin/school', {page: page})
     .then((v) => {
       return v.data
     }).then((v) => {
@@ -43,7 +43,7 @@ function login (params) {
   })
 }
 function getCommunityList (page) {
-  return get('/admin/community?page' + page).then((v) => {
+  return get('/admin/community', {page: page}).then((v) => {
     return v.data
   }).then((v) => {
     return v.data

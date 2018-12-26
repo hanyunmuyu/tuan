@@ -19,6 +19,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                                <tr v-for="(community,index) in communityList.data" :key="index">
+                                    <th>{{community.id}}</th>
+                                    <th>{{community.community_name}}</th>
+                                    <th class="col-2 col-sm-2"><img :src="community.community_logo" class="img-responsive"></th>
+                                    <th>{{community.created_at}}</th>
+                                    <th>操作</th>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -29,7 +36,7 @@
         </div>
         <div class="row">
             <div class="align-content-center">
-                <Pagination :totalPage=10 url="/community"></Pagination>
+                <Pagination :totalPage=lastPage url="/community"></Pagination>
             </div>
         </div>
     </section>
@@ -38,6 +45,7 @@
 <script>
 import {getCommunityList} from '../../service'
 import Pagination from '../widget/Pagination'
+
 export default {
   name: 'Community',
   components: {Pagination},
@@ -54,6 +62,12 @@ export default {
         this.$data.communityList = v
         this.$data.lastPage = v.last_page
       })
+    }
+  },
+  watch: {
+    $route (to, from) {
+      this.$data.currentPage = this.$route.query.page === undefined ? 1 : this.$route.query.page
+      this.getDataList(this.$data.currentPage)
     }
   },
   mounted () {

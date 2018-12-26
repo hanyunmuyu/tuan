@@ -19,7 +19,7 @@ class CommunityController extends Controller
     {
         $list = $this->communityRepository->getCommunityList();
         foreach ($list as $key => $community) {
-            $community->community_log = config('app.url') . $community->community_logo;
+            $community->community_logo = config('app.url') . $community->community_logo;
             $list[$key] = $community;
         }
         return $this->success($list);
