@@ -49,4 +49,11 @@ function getCommunityList (page) {
     return v.data
   })
 }
-export {getSchoolList, login, getCommunityList}
+function getCommunityDetail (id) {
+  return get('/admin/community/detail', {id: id}).then((v) => {
+    return v.data
+  }).then((v) => {
+    return v.data
+  })
+}
+export {getSchoolList, login, getCommunityList, getCommunityDetail}

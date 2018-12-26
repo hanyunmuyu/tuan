@@ -5,6 +5,7 @@ import Home from '../components/admin/Home'
 import Login from '../components/admin/Login'
 import School from '../components/admin/School'
 import Community from '../components/admin/Community'
+import CommunityDetail from '../components/admin/CommunityDetail'
 Vue.use(Router)
 
 export default new Router({
@@ -24,6 +25,10 @@ export default new Router({
         {
           path: 'community',
           component: Community
+        },
+        {
+          path: 'community/detail',
+          component: CommunityDetail
         }
       ]
     },

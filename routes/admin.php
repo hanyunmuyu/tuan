@@ -17,3 +17,4 @@
 Route::post('/login','LoginController@login');
 Route::get('/school', 'SchoolController@index');
 Route::get('/community', 'CommunityController@index');
+Route::get('/community/detail', 'CommunityController@detail');

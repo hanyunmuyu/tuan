@@ -15,4 +15,9 @@ class CommunityModel extends Model
         'member_number',
         'school_id',
     ];
+
+    public function getCommunityLogoAttribute($logo)
+    {
+        return config('app.url') . $logo;
+    }
 }

@@ -24,7 +24,9 @@
                                     <th>{{community.community_name}}</th>
                                     <th class="col-2 col-sm-2"><img :src="community.community_logo" class="img-responsive"></th>
                                     <th>{{community.created_at}}</th>
-                                    <th>操作</th>
+                                    <th>
+                                        <router-link :to="{path:'/community/detail',query:{id:community.id}}" class="btn btn-info">详情</router-link>
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>

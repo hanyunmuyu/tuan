@@ -17,4 +17,9 @@ class CommunityRepository
     {
         return CommunityModel::orderby('id', 'desc')->paginate();
     }
+
+    public function detail($id)
+    {
+        return CommunityModel::where('id', $id)->first();
+    }
 }
