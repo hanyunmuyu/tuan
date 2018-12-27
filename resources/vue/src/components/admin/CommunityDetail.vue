@@ -123,6 +123,7 @@
                             </div>
                             <div class="row">
                                 <div class="align-content-center">
+                                    <Pagination :total-page=10 :url="$route.fullPath"></Pagination>
                                 </div>
                             </div> <!-- /.post -->
                     </div>
@@ -300,6 +301,7 @@ import Pagination from '../widget/Pagination'
 
 export default {
   name: 'CommunityDetail',
+  components: {Pagination},
   data () {
     return {
       'community': {},
@@ -309,13 +311,19 @@ export default {
   },
   methods: {
     getDetail () {
-      getCommunityDetail(1).then((v) => {
+      let id = this.$route.query.id
+      getCommunityDetail({id: id}).then((v) => {
         this.community = v
       })
     }
   },
   mounted () {
     this.getDetail()
+  },
+  watch: {
+    $route (to, from) {
+      this.getDetail()
+    }
   },
   comments: {Pagination},
   template: '<Pagination/>'

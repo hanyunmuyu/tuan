@@ -49,8 +49,8 @@ function getCommunityList (page) {
     return v.data
   })
 }
-function getCommunityDetail (id) {
-  return get('/admin/community/detail', {id: id}).then((v) => {
+function getCommunityDetail (params) {
+  return get('/admin/community/detail', params).then((v) => {
     return v.data
   }).then((v) => {
     return v.data

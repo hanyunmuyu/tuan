@@ -1,5 +1,5 @@
 'use strict'
-const webpack=require('webpack')
+const webpack = require('webpack')
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
@@ -27,9 +27,9 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      $:'jquery',
-      jQuery:'jquery',
-      'window.jQuery':'jquery'
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     })
   ],
   output: {
@@ -44,7 +44,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'va': 'vue2-admin-lte/src',
+      'va': 'vue2-admin-lte/src'
     }
   },
   module: {

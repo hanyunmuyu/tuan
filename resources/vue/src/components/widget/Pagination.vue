@@ -21,7 +21,10 @@ export default {
       type: Number
     },
     url: {
-      type: String
+      type: String,
+      default: function () {
+        return this.$route.fullPath
+      }
     }
   },
   methods: {
