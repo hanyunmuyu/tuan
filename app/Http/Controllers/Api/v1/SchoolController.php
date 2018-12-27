@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Repositories\v1\SchoolRepository;
+use App\Services\AttachmentService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SchoolController extends Controller
 {
     private $schoolRepository;
+    private $attachmentService;
 
-    public function __construct(SchoolRepository $schoolRepository)
+    public function __construct(SchoolRepository $schoolRepository, AttachmentService $attachmentService)
     {
         $this->schoolRepository = $schoolRepository;
+        $this->attachmentService = $attachmentService;
     }
 
     public function list(Request $request)
@@ -38,5 +41,10 @@ class SchoolController extends Controller
         }
         $data['schoolList'] = $schoolList;
         return $this->success($data);
+    }
+
+    public function post(Request $request)
+    {
+        return $this->success($this->attachmentService->addAttachment($request, 'file', false));
     }
 }
